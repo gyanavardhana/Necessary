@@ -1,0 +1,24 @@
+https://leetcode.com/problems/permutation-in-string/description/
+
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        l = list(s1)
+        d={}
+        for i in range(len(l)):
+            d[l[i]]=i+1
+        def oo(l):
+            s=0
+            for i in l:
+                if i in d:
+                    s+=d[i]
+                else:
+                    return None
+            return s
+        ss=oo(l)
+        for i in range(len(l),len(s2)+1):
+            jj = list(s2[i-len(l):i])
+            if ss==oo(jj) and sorted(jj)==sorted(l):
+                print(jj)
+                return True
+        return False
+        
